@@ -1,9 +1,10 @@
 import { dbService } from "fbInstance";
 import React, { useState, useEffect } from "react";
-
-const Home = () => {
-  const [mWeet, setMWeet] = useState("");
+import Mweet from "../Mweet";
+import MweetFactory from "Components/MweetFactory";
+const Home = ({ userObj }) => {
   const [mWeets, setMWeets] = useState([]);
+  /*
   const getMadWeets = async () => {
     const dbmadweets = await dbService.collection("madweet").get();
     dbmadweets.forEach((document) => {
@@ -14,41 +15,33 @@ const Home = () => {
       setMWeets((prev) => [mweetObject, ...prev]);
     });
   };
+
+  // collection.get 방식
+  */
   useEffect(() => {
-    getMadWeets();
+    // getMadWeets();
+    dbService
+      .collection("madweet")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const mweetArray = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setMWeets(mweetArray);
+      }); // collection.snapshot방식 :  CRUD 발생시 마다 snapshot => Realtime 구현 시
   }, []);
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await dbService.collection("madweet").add({
-      mWeet,
-      createdAt: Date.now(),
-    });
-    setMWeet("");
-  };
-  const onChange = (e) => {
-    const {
-      target: { value },
-    } = e;
-    setMWeet(value);
-  };
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <input
-          value={mWeet}
-          onChange={onChange}
-          type="text"
-          placeholder="input ? "
-          maxLength={120}
-        />
-        <input type="submit" value="mWeet" />
-      </form>
+      <MweetFactory userObj={userObj} />
       <div>
         {mWeets &&
           mWeets.map((mWeet) => (
-            <div key={mWeet.id}>
-              <h4>{mWeet.mWeet}</h4>
-            </div>
+            <Mweet
+              key={mWeet.id}
+              mWeetObj={mWeet}
+              isOwner={mWeet.creatorId === userObj.uid}
+            />
           ))}
       </div>
     </div>
