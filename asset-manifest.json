@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/maditter/static/css/main.6c18ee72.chunk.css",
+    "main.js": "/maditter/static/js/main.cf78082b.chunk.js",
+    "main.js.map": "/maditter/static/js/main.cf78082b.chunk.js.map",
+    "runtime-main.js": "/maditter/static/js/runtime-main.055cb7f7.js",
+    "runtime-main.js.map": "/maditter/static/js/runtime-main.055cb7f7.js.map",
+    "static/js/2.9375ad12.chunk.js": "/maditter/static/js/2.9375ad12.chunk.js",
+    "static/js/2.9375ad12.chunk.js.map": "/maditter/static/js/2.9375ad12.chunk.js.map",
+    "index.html": "/maditter/index.html",
+    "static/css/main.6c18ee72.chunk.css.map": "/maditter/static/css/main.6c18ee72.chunk.css.map",
+    "static/js/2.9375ad12.chunk.js.LICENSE.txt": "/maditter/static/js/2.9375ad12.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.055cb7f7.js",
+    "static/js/2.9375ad12.chunk.js",
+    "static/css/main.6c18ee72.chunk.css",
+    "static/js/main.cf78082b.chunk.js"
+  ]
+}
