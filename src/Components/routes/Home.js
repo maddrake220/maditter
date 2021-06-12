@@ -32,9 +32,9 @@ const Home = ({ userObj }) => {
       }); // collection.snapshot방식 :  CRUD 발생시 마다 snapshot => Realtime 구현 시
   }, []);
   return (
-    <div>
+    <div className="container">
       <MweetFactory userObj={userObj} />
-      <div>
+      <div style={{ marginTop: 30 }}>
         {mWeets &&
           mWeets.map((mWeet) => (
             <Mweet
